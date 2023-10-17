@@ -6,7 +6,7 @@ interface TickersResponse {
     tickers: Ticker[] | undefined;
     isLoading: boolean;
 }
-interface dayInfo {
+export interface dayInfo {
     open: number;
     close: number;
     high: number;
