@@ -1,59 +1,45 @@
-import { Chart } from "react-google-charts";
 import { TickerResponse } from "../hooks/useFetchTickers";
 import CardDayInfo from "./CardDayInfo";
-
-const options = {
-  curveType: "function",
-  legend: { position: "bottom" },
-};
+import UniqueChart from "./UniqueChart";
 
 export function TickerChart({ tickerInfo, isLoading }: TickerResponse) {
-  const data = [["Day", "Historic close price"]];
+  const dataDay: Array<[string, number, number, number, number]> = [];
 
   if (tickerInfo?.data) {
     tickerInfo.data.slice(0, 30).forEach((day) => {
-      data.push([
+      dataDay.push([
         new Date(day.date).toLocaleDateString("en-US", {
           month: "2-digit",
           day: "2-digit",
         }),
+        day.low,
+        day.open,
         day.close,
+        day.high,
       ]);
     });
   } else {
     console.log(tickerInfo?.error.message);
   }
+
   return (
     <>
-      <div className="">
-        {isLoading ? (
-          <div className="d-flex justify-content-center">
-            <div className="spinner-border" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </div>
+      {isLoading ? (
+        <div className="d-flex justify-content-center">
+          <div className="spinner-border" role="status">
+            <span className="visually-hidden">Loading...</span>
           </div>
-        ) : tickerInfo?.error ? (
-          <div className="alert alert-danger" role="alert">
-            {tickerInfo.error.message}
-          </div>
-        ) : (
-          <div className="d-flex flex-column">
-            <div
-              className="d-flex justify-content-center shadow-sm p-3"
-              style={{ overflow: "hidden", width: "100%", height: "300px" }}
-            >
-              <Chart
-                chartType="LineChart"
-                width="100%"
-                height="400px"
-                data={data}
-                options={options}
-              />
-            </div>
-            <CardDayInfo tickerInfo={tickerInfo} />
-          </div>
-        )}
-      </div>
+        </div>
+      ) : tickerInfo?.error ? (
+        <div className="alert alert-danger" role="alert">
+          {tickerInfo.error.message}
+        </div>
+      ) : (
+        <div className="d-flex flex-column justify-content-center">
+          <UniqueChart dataDay={dataDay} />
+          <CardDayInfo tickerInfo={tickerInfo} isLoading={false} />
+        </div>
+      )}
     </>
   );
 }

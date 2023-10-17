@@ -58,6 +58,12 @@ const CardDayInfo = ({ tickerInfo, isLoading }: TickerResponse) => {
               </li>
               <li className="list-group-item">
                 <div className="d-flex justify-content-between">
+                  <strong>Low price: </strong>
+                  <p>$ {tickerInfo?.data[currentDay].low}</p>
+                </div>
+              </li>
+              <li className="list-group-item">
+                <div className="d-flex justify-content-between">
                   <strong>Open price: </strong>
                   <p>$ {tickerInfo?.data[currentDay].open}</p>
                 </div>
@@ -76,14 +82,8 @@ const CardDayInfo = ({ tickerInfo, isLoading }: TickerResponse) => {
               </li>
               <li className="list-group-item">
                 <div className="d-flex justify-content-between">
-                  <strong>Low price: </strong>
-                  <p>$ {tickerInfo?.data[currentDay].low}</p>
-                </div>
-              </li>
-              <li className="list-group-item">
-                <div className="d-flex justify-content-between">
                   <strong>Volume: </strong>
-                  <p>$ {tickerInfo?.data[currentDay].low}</p>
+                  <p>{tickerInfo?.data[currentDay].volume}</p>
                 </div>
               </li>
             </ul>
