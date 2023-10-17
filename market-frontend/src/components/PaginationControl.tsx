@@ -8,7 +8,6 @@ const PaginationControl = () => {
     <>
       <TickerList page={page} />
 
-      
       <div className="conatiner d-flex justify-content-between align-items-center p-3">
         <div>
           <button
@@ -38,7 +37,6 @@ const PaginationControl = () => {
           </button>
         </div>
       </div>
-    
     </>
   );
 };

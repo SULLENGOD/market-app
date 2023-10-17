@@ -15,7 +15,7 @@ const App = () => {
   return (
     <div className="main-container">
       <div className="main-app">
-        <h1>Tickers</h1>
+        <h1 className="p-3">Tickers</h1>
         <div className="container">
           <PaginationControl />
         </div>

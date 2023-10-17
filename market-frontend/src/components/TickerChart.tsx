@@ -1,13 +1,11 @@
 import { Chart } from "react-google-charts";
 import { TickerResponse } from "../hooks/useFetchTickers";
+import CardDayInfo from "./CardDayInfo";
 
 const options = {
-  title: "Company Performance",
   curveType: "function",
   legend: { position: "bottom" },
 };
-
-
 
 export function TickerChart({ tickerInfo, isLoading }: TickerResponse) {
   const data = [["Day", "Historic close price"]];
@@ -16,7 +14,7 @@ export function TickerChart({ tickerInfo, isLoading }: TickerResponse) {
     tickerInfo.data.slice(0, 30).forEach((day) => {
       data.push([
         new Date(day.date).toLocaleDateString("en-US", {
-          month: "2-digit",
+          month: "short",
           day: "2-digit",
         }),
         day.close,
@@ -25,30 +23,31 @@ export function TickerChart({ tickerInfo, isLoading }: TickerResponse) {
   } else {
     console.log(tickerInfo?.error.message);
   }
-
   return (
     <>
       <div className="">
         {isLoading ? (
-          <h1>Loading...</h1>
+          <div className="d-flex justify-content-center">
+            <div className="spinner-border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </div>
         ) : tickerInfo?.error ? (
-          <h5>{tickerInfo.error.message}</h5>
+          <div className="alert alert-danger" role="alert">
+            {tickerInfo.error.message}
+          </div>
         ) : (
           <div className="d-flex flex-column">
-            <p>
-              <strong>Close: </strong> {tickerInfo?.data[0].close},{" "}
-              <strong>High: </strong>
-              {tickerInfo?.data[0].high}, <strong>Low: </strong>
-              {tickerInfo?.data[0].low},<strong>Volume: </strong>{" "}
-              {tickerInfo?.data[0].volume}
-            </p>
-            <Chart
-              chartType="LineChart"
-              width="100%"
-              height="400px"
-              data={data}
-              options={options}
-            />
+            <div className="container position-static shadow-sm">
+              <Chart
+                chartType="LineChart"
+                width="100%"
+                height="100%"
+                data={data}
+                options={options}
+              />
+            </div>
+            <CardDayInfo tickerInfo={tickerInfo} />
           </div>
         )}
       </div>
