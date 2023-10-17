@@ -4,7 +4,6 @@ import { TickerChart } from "./TickerChart";
 
 const TickerDetail = ({ ticker }: { ticker: Ticker }) => {
   const { tickerInfo, isLoading } = useFetchTicker(ticker.symbol);
-  console.log(tickerInfo);
   
   return (
     <div

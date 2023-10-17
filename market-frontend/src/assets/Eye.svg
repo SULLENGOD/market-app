@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1_copy" data-name="Layer 1 copy" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 754.57 436.57">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-1, .cls-2 {
+        stroke: #000;
+        stroke-miterlimit: 10;
+        stroke-width: 3px;
+      }
+    </style>
+  </defs>
+  <path class="cls-1" d="M377.29,1.5C216.81,1.5,76.7,88.69,1.73,218.29c74.97,129.59,215.07,216.79,375.55,216.79s300.59-87.19,375.55-216.79C677.87,88.69,537.77,1.5,377.29,1.5Z"/>
+  <path class="cls-1" d="M377.29,8.64C222.09,8.64,86.59,92.96,14.09,218.29c72.5,125.33,207.99,209.65,363.19,209.65s290.69-84.32,363.19-209.65C667.98,92.96,532.48,8.64,377.29,8.64Z"/>
+  <circle class="cls-1" cx="377.29" cy="218.29" r="163.38"/>
+  <circle class="cls-2" cx="377.29" cy="218.29" r="9.03"/>
+</svg>
