@@ -14,7 +14,7 @@ export function TickerChart({ tickerInfo, isLoading }: TickerResponse) {
     tickerInfo.data.slice(0, 30).forEach((day) => {
       data.push([
         new Date(day.date).toLocaleDateString("en-US", {
-          month: "short",
+          month: "2-digit",
           day: "2-digit",
         }),
         day.close,
@@ -38,11 +38,14 @@ export function TickerChart({ tickerInfo, isLoading }: TickerResponse) {
           </div>
         ) : (
           <div className="d-flex flex-column">
-            <div className="container position-static shadow-sm">
+            <div
+              className="d-flex justify-content-center shadow-sm p-3"
+              style={{ overflow: "hidden", width: "100%", height: "300px" }}
+            >
               <Chart
                 chartType="LineChart"
                 width="100%"
-                height="100%"
+                height="400px"
                 data={data}
                 options={options}
               />

@@ -3,7 +3,8 @@ import { useFetchPrice } from "../hooks/useFetchTickers";
 import TickerDetail from "./TickerDetail";
 
 const ModalChart = ({ ticker }: { ticker: Ticker }) => {
-  const { price } = useFetchPrice(ticker.symbol);
+
+  const { price } = useFetchPrice(ticker.symbol);  
 
   return (
     <div className="m-3">

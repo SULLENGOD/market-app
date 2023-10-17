@@ -12,3 +12,9 @@
     flex-direction: column;
     width: 75vw;
 }
+
+.reactgooglegraph-1 {
+    display: block;
+    position: absolute;
+
+}
